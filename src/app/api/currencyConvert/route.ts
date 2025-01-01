@@ -1,4 +1,4 @@
-export async function GET(request: any) {
+export async function GET() {
   // Fetch data from JSONPlaceholder API
   const response = await fetch(
     "https://api.exchangerate-api.com/v4/latest/USD"

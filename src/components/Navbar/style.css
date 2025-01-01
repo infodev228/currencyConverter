@@ -1,0 +1,25 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.navbar {
+  display: flex;
+  padding: 14px 16px;
+  /* background-color: rebeccapurple; */
+  color: #fff;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  font-family: "Bebas Neue";
+}
+.navbar-container {
+  display: flex;
+  gap: 10px;
+  list-style: none;
+}
+.navbar-container a:hover {
+  background-color: #ddd;
+  color: rebeccapurple;
+  padding: 14px 16px;
+}

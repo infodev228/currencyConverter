@@ -35,8 +35,8 @@ export default function ExchangePage() {
             align="center"
             sx={{ fontSize: { xs: "0.875rem", md: "1rem" }, mb: 2 }}
           >
-            Need to make an international business payment? Take a look at our
-            live foreign exchange rates.
+            Need to make an international business payment? Explore our live
+            foreign exchange rates and convert currency with ease.
           </Typography>
         </Box>
 

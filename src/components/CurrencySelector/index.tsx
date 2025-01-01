@@ -1,6 +1,6 @@
 // components/CurrencySelector.tsx
 import React from "react";
-import { TextField, InputAdornment, MenuItem, Typography } from "@mui/material";
+import { TextField, MenuItem, Typography } from "@mui/material";
 import Image from "next/image";
 import "./styles.css";
 
@@ -17,7 +17,6 @@ const CurrencySelector: React.FC<CurrencySelectorProps> = ({
   defaultCurrency,
   handleCurrencyChange,
   label,
-  selectedCurrency,
 }) => {
   const getCountryName = (countryCode: string): string => {
     const regionNames = new Intl.DisplayNames(["en"], { type: "region" });

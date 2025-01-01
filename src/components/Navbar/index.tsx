@@ -15,9 +15,8 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Link from "next/link";
 
 const pages = [
-  { name: "Products", path: "/products" },
-  { name: "Pricing", path: "/pricing" },
-  { name: "Currency Converter", path: "/currencyconverter" },
+  { name: "Home", path: "/" },
+  { name: "Currency Exchange", path: "/exchange" },
 ];
 
 function NavBar() {

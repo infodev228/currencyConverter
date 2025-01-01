@@ -1,12 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import {
-  Box,
-  TextField,
-  Button,
-  CircularProgress,
-  Typography,
-} from "@mui/material";
+import { Box, TextField, CircularProgress, Typography } from "@mui/material";
 import CurrencySelector from "../CurrencySelector";
 import SwapHorizontalCircleOutlinedIcon from "@mui/icons-material/SwapHorizontalCircleOutlined";
 
@@ -34,7 +28,7 @@ export default function CurrencyForm() {
         if (data && data.rates) {
           setCurrencies(Object.keys(data.rates));
           setConversionRate(data.rates[toCurrency] || null);
-          console.log(Object.keys(data.rates));
+          //   console.log(Object.keys(data.rates));
         }
       } catch (err: any) {
         setError(err.message || "Something went wrong");

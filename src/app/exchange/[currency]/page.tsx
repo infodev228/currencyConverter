@@ -1,4 +1,4 @@
-export default async function ExchangePage(params: any) {
+export default async function ExchangePage({ params }) {
   // Fetching exchange rate data server-side
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_SITE_URL}/api/exchange-rate?base=USD`

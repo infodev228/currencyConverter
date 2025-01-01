@@ -1,6 +1,6 @@
 // Dynamic Head Tags for different pages:
 
-export default function Head({ params }: any) {
+export default function Head({ params }: { params: { currency: string } }) {
   return (
     <>
       <title>{`Exchange ${params.currency.toUpperCase()} | FX Rates`}</title>

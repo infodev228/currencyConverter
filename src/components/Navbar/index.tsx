@@ -15,7 +15,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import Link from "next/link";
 
 const pages = [
-  { name: "Home", path: "/" },
+  { name: "Home", path: "/exchange" },
   { name: "Currency Exchange", path: "/exchange" },
 ];
 
@@ -41,7 +41,7 @@ function NavBar() {
             variant="h6"
             noWrap
             component={Link}
-            href="/"
+            href="/exchange"
             sx={{
               mr: 2,
               display: { xs: "none", md: "flex" },

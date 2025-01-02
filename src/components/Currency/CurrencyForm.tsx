@@ -90,6 +90,13 @@ export default function CurrencyForm() {
     }
   };
 
+  const handleSwap = () => {
+    setFromCurrency((prevFrom) => {
+      setToCurrency(prevFrom);
+      return toCurrency;
+    });
+  };
+
   return (
     <Box
       component="form"
@@ -112,7 +119,7 @@ export default function CurrencyForm() {
 
       <CurrencySelector
         label="From"
-        defaultCurrency="USD"
+        // defaultCurrency="USD"
         currencies={currencies}
         selectedCurrency={fromCurrency}
         handleCurrencyChange={(e: any) => {
@@ -123,7 +130,7 @@ export default function CurrencyForm() {
         }}
       />
 
-      <Typography onClick={() => setFromCurrency(toCurrency)} component="span">
+      <Typography onClick={handleSwap} component="span">
         <SwapHorizontalCircleOutlinedIcon
           fontSize={"large"}
           sx={{ mt: 2, color: "#E5133A" }}
@@ -132,7 +139,7 @@ export default function CurrencyForm() {
 
       <CurrencySelector
         label="To"
-        defaultCurrency="INR"
+        // defaultCurrency="INR"
         currencies={currencies}
         selectedCurrency={toCurrency}
         handleCurrencyChange={(e: any) => setToCurrency(e.target.value)}

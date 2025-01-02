@@ -6,7 +6,7 @@ import "./styles.css";
 
 interface CurrencySelectorProps {
   currencies: string[];
-  defaultCurrency: string;
+  //   defaultCurrency: string;
   handleCurrencyChange: any;
   selectedCurrency: any;
   label: string;
@@ -14,9 +14,9 @@ interface CurrencySelectorProps {
 
 const CurrencySelector: React.FC<CurrencySelectorProps> = ({
   currencies,
-  defaultCurrency,
   handleCurrencyChange,
   label,
+  selectedCurrency,
 }) => {
   const getCountryName = (countryCode: string): string => {
     const regionNames = new Intl.DisplayNames(["en"], { type: "region" });
@@ -26,9 +26,8 @@ const CurrencySelector: React.FC<CurrencySelectorProps> = ({
     <TextField
       select
       label={label}
-      defaultValue={defaultCurrency}
+      value={selectedCurrency}
       onChange={handleCurrencyChange}
-      //   sx={{ width: "30ch" }}
       id="select-currency"
       className="selectCurrency"
     >
@@ -41,10 +40,7 @@ const CurrencySelector: React.FC<CurrencySelectorProps> = ({
             alt="Currency Flag"
             style={{ marginRight: "8px" }}
           />
-          <Typography
-            component="span"
-            // sx={{ position: "relative", bottom: "14px" }}
-          >
+          <Typography component="span">
             {option} - {getCountryName(option.substring(0, 2))}
           </Typography>
         </MenuItem>

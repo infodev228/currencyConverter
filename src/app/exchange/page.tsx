@@ -81,8 +81,11 @@ export default function ExchangePage() {
                   marginTop: "10px",
                 }}
               >
-                Send secure international business payments in XX currencies,
-                all at competitive rates with no hidden fees.
+                Exchange rates provided by this API are updated once per day and
+                may not reflect real-time market values. Rates are for
+                informational purposes only and should not be used for financial
+                transactions requiring precise data. Please verify rates with
+                your financial institution before proceeding with any exchange.
               </Typography>
 
               <Box sx={{ mt: 4 }}>

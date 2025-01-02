@@ -14,7 +14,7 @@ export default function CurrencyForm() {
   const [convertedAmount, setConvertedAmount] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [currencySymbol, setCurrencySymbol] = useState<string>("$");
+  const [, setCurrencySymbol] = useState<string>("$");
 
   useEffect(() => {
     const getCurrencyData = async () => {
@@ -84,6 +84,7 @@ export default function CurrencyForm() {
         .replace(/\d/g, "")
         .trim();
     } catch (error) {
+      console.log(error);
       console.error("Invalid currency code:", currencyCode);
       return "$";
     }

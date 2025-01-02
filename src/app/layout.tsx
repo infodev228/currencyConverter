@@ -2,7 +2,7 @@
 
 import Header from "@/components/Header";
 import ThemeRegistry from "@/components/ThemeRegistry";
-
+import { Analytics } from "@vercel/analytics/react";
 export const metadata = {
   title: "Currency Exchange App",
   description: "Get live currency exchange rates.",
@@ -34,6 +34,7 @@ export default function RootLayout({
         <ThemeRegistry>
           <Header />
           {children}
+          <Analytics />
         </ThemeRegistry>
       </body>
     </html>

@@ -104,7 +104,7 @@ function NavBar() {
             variant="h5"
             noWrap
             component={Link}
-            href="/"
+            href="/exchange"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -116,7 +116,7 @@ function NavBar() {
               textDecoration: "none",
             }}
           >
-            LOGO
+            DollartoInr
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (

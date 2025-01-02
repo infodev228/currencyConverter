@@ -1,6 +1,7 @@
 // app/exchange/page.tsx
 
 import CurrencyForm from "@/components/Currency/CurrencyForm";
+import { Padding } from "@mui/icons-material";
 import {
   Box,
   Card,
@@ -33,7 +34,11 @@ export default function ExchangePage() {
           <Typography
             variant="body1"
             align="center"
-            sx={{ fontSize: { xs: "0.875rem", md: "1rem" }, mb: 2 }}
+            sx={{
+              fontSize: { xs: "0.875rem", md: "1rem" },
+              padding: { xs: "0 5px" },
+              mb: 2,
+            }}
           >
             Need to make an international business payment? Explore our live
             foreign exchange rates and convert currency with ease.

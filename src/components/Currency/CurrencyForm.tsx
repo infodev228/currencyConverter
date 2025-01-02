@@ -133,11 +133,25 @@ export default function CurrencyForm() {
       <Typography
         onClick={handleSwap}
         component="span"
-        sx={{ cursor: "pointer" }}
+        sx={{
+          cursor: "pointer",
+          mt: 2,
+          "@media (max-width:600px)": {
+            display: "flex",
+            justifyContent: "center",
+          },
+        }}
       >
         <SwapHorizontalCircleOutlinedIcon
           fontSize={"large"}
-          sx={{ mt: 2, color: "#E5133A" }}
+          sx={{
+            mt: 2,
+            color: "#E5133A",
+
+            "@media (max-width:600px)": {
+              mt: "-10px",
+            },
+          }}
         />
       </Typography>
 

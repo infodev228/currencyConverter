@@ -13,7 +13,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import Link from "next/link";
-import { CurrencyBitcoin, CurrencyExchange } from "@mui/icons-material";
+import { CurrencyExchange } from "@mui/icons-material";
 
 const pages = [
   { name: "Home", path: "/exchange" },

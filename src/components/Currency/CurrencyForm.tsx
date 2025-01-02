@@ -6,29 +6,26 @@ import SwapHorizontalCircleOutlinedIcon from "@mui/icons-material/SwapHorizontal
 
 export default function CurrencyForm() {
   const [currencies, setCurrencies] = useState<string[]>([]);
-  const [amount, setAmount] = useState<number>(1);
+  const [rawAmount, setRawAmount] = useState<string>("1"); // Unformatted
+  const [displayAmount, setDisplayAmount] = useState<string>("$1.00"); // Formatted
   const [fromCurrency, setFromCurrency] = useState<string>("USD");
   const [toCurrency, setToCurrency] = useState<string>("INR");
   const [conversionRate, setConversionRate] = useState<number | null>(null);
   const [convertedAmount, setConvertedAmount] = useState<number | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
+  const [currencySymbol, setCurrencySymbol] = useState<string>("$");
 
-  // Fetch currencies and conversion rate
   useEffect(() => {
     const getCurrencyData = async () => {
       setLoading(true);
-      setError(null);
       try {
         const response = await fetch("/api/currencyConvert");
-        if (!response.ok) {
-          throw new Error("Failed to fetch exchange rates");
-        }
+        if (!response.ok) throw new Error("Failed to fetch rates");
         const data = await response.json();
         if (data && data.rates) {
           setCurrencies(Object.keys(data.rates));
           setConversionRate(data.rates[toCurrency] || null);
-          //   console.log(Object.keys(data.rates));
         }
       } catch (err: any) {
         setError(err.message || "Something went wrong");
@@ -36,22 +33,60 @@ export default function CurrencyForm() {
         setLoading(false);
       }
     };
-
     getCurrencyData();
   }, [fromCurrency, toCurrency]);
 
-  // Calculate converted amount
   useEffect(() => {
-    if (conversionRate) {
-      const result = amount * conversionRate;
+    if (conversionRate && rawAmount) {
+      const result = parseFloat(rawAmount) * conversionRate;
       setConvertedAmount(result);
     }
-  }, [amount, conversionRate]);
+  }, [rawAmount, conversionRate]);
 
-  // Swap Currencies
-  const handleSwap = () => {
-    setFromCurrency(toCurrency);
-    setToCurrency(fromCurrency);
+  useEffect(() => {
+    const symbol = getCurrencySymbol(fromCurrency);
+    setCurrencySymbol(symbol);
+    formatAmount(rawAmount, fromCurrency);
+  }, [fromCurrency]);
+
+  const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const rawInput = e.target.value.replace(/[^\d.]/g, ""); // Allow only numbers and dots
+    setRawAmount(rawInput);
+    setDisplayAmount(rawInput); // Temporarily show unformatted while typing
+  };
+
+  const handleBlur = () => {
+    formatAmount(rawAmount, fromCurrency);
+  };
+
+  const formatAmount = (value: string, currencyCode: string) => {
+    if (!value) {
+      setDisplayAmount("");
+      return;
+    }
+    const formatted = Number(value).toLocaleString("en", {
+      style: "currency",
+      currency: currencyCode,
+      minimumFractionDigits: 2,
+    });
+    setDisplayAmount(formatted);
+  };
+
+  const getCurrencySymbol = (currencyCode: string): string => {
+    try {
+      return (0)
+        .toLocaleString("en", {
+          style: "currency",
+          currency: currencyCode,
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0,
+        })
+        .replace(/\d/g, "")
+        .trim();
+    } catch (error) {
+      console.error("Invalid currency code:", currencyCode);
+      return "$";
+    }
   };
 
   return (
@@ -59,19 +94,19 @@ export default function CurrencyForm() {
       component="form"
       sx={{
         "& .MuiTextField-root": { m: 1, width: { xs: "100%", md: "29ch" } },
-        // width: { xs: "100%", md: "auto" },
       }}
       noValidate
       autoComplete="off"
     >
-      {/* <div> */}
+      {/* <Typography variant="h6">{displayAmount}</Typography> */}
+
       <TextField
         label="Amount"
-        type="number"
         variant="outlined"
-        value={amount}
-        onChange={(e) => setAmount(Number(e.target.value))}
-        sx={{ xs: "100%", md: "30%" }}
+        value={displayAmount}
+        onChange={handleAmountChange}
+        onBlur={handleBlur} // Format on blur
+        sx={{ width: "100%" }}
       />
 
       <CurrencySelector
@@ -79,10 +114,15 @@ export default function CurrencyForm() {
         defaultCurrency="USD"
         currencies={currencies}
         selectedCurrency={fromCurrency}
-        handleCurrencyChange={(e: any) => setFromCurrency(e.target.value)}
+        handleCurrencyChange={(e: any) => {
+          const newCurrency = e.target.value;
+          setFromCurrency(newCurrency);
+          setCurrencySymbol(getCurrencySymbol(newCurrency));
+          formatAmount(rawAmount, newCurrency);
+        }}
       />
 
-      <Typography onClick={handleSwap} component="span" sx={{ m: 0 }}>
+      <Typography onClick={() => setFromCurrency(toCurrency)} component="span">
         <SwapHorizontalCircleOutlinedIcon
           fontSize={"large"}
           sx={{ mt: 2, color: "#E5133A" }}
@@ -101,10 +141,13 @@ export default function CurrencyForm() {
 
       {convertedAmount !== null && !loading && (
         <Typography variant="h6" sx={{ mt: 2 }}>
-          {amount} {fromCurrency} = {convertedAmount.toFixed(2)} {toCurrency}
+          {displayAmount} ={" "}
+          {convertedAmount.toLocaleString("en", {
+            style: "currency",
+            currency: toCurrency,
+          })}
         </Typography>
       )}
-      {/* </div> */}
       {loading && <CircularProgress sx={{ mt: 2, color: "#E5133A" }} />}
     </Box>
   );

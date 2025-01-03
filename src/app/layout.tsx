@@ -31,11 +31,24 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ThemeRegistry>
-          <Header />
-          {children}
-          <Analytics />
-        </ThemeRegistry>
+        {/* <ThemeRegistry> */}
+        {/* <Header /> */}
+
+        {children}
+        <Analytics />
+        <footer
+        // style={{
+        //   textAlign: "center",
+        //   padding: "10px",
+        //   backgroundColor: "#f1f1f1",
+        // }}
+        >
+          <p>
+            &copy; {new Date().getFullYear()} dollartoinr.in. All rights
+            reserved.
+          </p>
+        </footer>
+        {/* </ThemeRegistry> */}
       </body>
     </html>
   );

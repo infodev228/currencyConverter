@@ -1,7 +1,7 @@
 // app/layout.tsx
 
-import Header from "@/components/Header";
-import ThemeRegistry from "@/components/ThemeRegistry";
+//import Header from "@/components/Header";
+//import ThemeRegistry from "@/components/ThemeRegistry";
 import { Analytics } from "@vercel/analytics/react";
 export const metadata = {
   title: "Currency Exchange App",

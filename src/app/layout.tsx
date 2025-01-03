@@ -9,7 +9,7 @@ export const metadata = {
   openGraph: {
     title: "Currency Exchange",
     description: "Real-time exchange rates for various currencies.",
-    url: "https://yourdomain.com",
+    url: "https://www.dollartoinr.in",
     siteName: "Currency Exchange",
     images: [
       {

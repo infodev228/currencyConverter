@@ -4,13 +4,19 @@
 //import ThemeRegistry from "@/components/ThemeRegistry";
 import { Analytics } from "@vercel/analytics/react";
 export const metadata = {
-  title: "Currency Exchange App",
-  description: "Get live currency exchange rates.",
+  title: "Currency Exchange App | Live Dollar to INR Rates",
+  description:
+    "Get real-time currency exchange rates for USD, EUR, GBP, and more. Convert currencies with accuracy and ease.",
+  keywords:
+    "currency exchange, dollar to inr, live forex rates, USD to INR, real-time currency converter, euro to inr, forex market rates",
+  author: "Currency Exchange Team",
+  robots: "index, follow",
   openGraph: {
-    title: "Currency Exchange",
-    description: "Real-time exchange rates for various currencies.",
+    title: "Currency Exchange | Live Forex Rates",
+    description:
+      "Real-time exchange rates and currency conversion for international and local currencies.",
     url: "https://www.dollartoinr.in",
-    siteName: "Currency Exchange",
+    siteName: "Dollar to Inr",
     images: [
       {
         url: "https://yourdomain.com/og-image.jpg",
